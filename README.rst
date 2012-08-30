@@ -1,7 +1,7 @@
 Django-PJAX
 ===========
 
-This is a Django helper for `defunkt's jquery-pjax`__. 
+This is a Django helper for `defunkt's jquery-pjax`__.
 
 Django-PJAX requires Django 1.3.
 
@@ -31,7 +31,7 @@ __ https://github.com/defunkt/jquery-pjax
 Next, make sure the views you're PJAXing are using TemplateResponse__. You can't use Django-PJAX with a normal ``HttpResponse``; only ``TemplateResponse``. Decorate these views with the ``pjax`` decorator::
 
     from djpjax import pjax
-    
+
     @pjax()
     def my_view(request):
         return TemplateResponse(request, "template.html", {'my': 'context'})
@@ -40,7 +40,7 @@ __ http://django.me/TemplateResponse
 
 After doing this, if the request is made via jQuery-PJAX, the ``@pjax()``
 decorator will automatically swap out ``template.html`` for
-``template-pjax.html``. 
+``template-pjax.html``.
 
 More formally: if the request is a PJAX request, the template used in your
 ``TemplateResponse`` will be replaced with one with ``-pjax`` before the file
@@ -52,7 +52,7 @@ You can also manually pick a PJAX template by passing it as an argument to
 the decorator::
 
     from djpjax import pjax
-    
+
     @pjax("pjax.html")
     def my_view(request):
         return TemplateResponse(request, "template.html", {'my': 'context'})
@@ -78,12 +78,12 @@ That's it!
 Using Template Extensions
 -------------------------
 
-If the content in your ``template-pjax.html`` file is very similar to your 
-``template.html`` an alternative method of operation is to use the decorator 
+If the content in your ``template-pjax.html`` file is very similar to your
+``template.html`` an alternative method of operation is to use the decorator
 ``pjaxtend``, as follows::
 
     from djpjax import pjaxtend
-    
+
     @pjaxtend
     def my_view(request):
         return TemplateResponse(request, "template.html", {'my': 'context'})
@@ -94,25 +94,25 @@ Then, in your ``template.html`` file you can do the following::
     ...
     ...
 
-Note that the template will extend ``base.html`` unless its a pjax request 
+Note that the template will extend ``base.html`` unless its a pjax request
 in which case it will extend ``pjax.html``.
- 
-If you want to define the parent for a standard http or pjax request, you can do 
+
+If you want to define the parent for a standard http or pjax request, you can do
 so as follows::
- 
+
     from djpjax import pjaxtend
-    
+
     @pjaxtend('someapp/base.html', 'my-pjax-extension.html')
     def my_view(request):
         return TemplateResponse(request, "template.html", {'my': 'context'})
- 
+
 Using this approach you don't need to create many ``*-pjax.html`` files.
 
-If you have a collision with the variable name ``parent`` you can specify the 
+If you have a collision with the variable name ``parent`` you can specify the
 context variable to use as the third parameter to pjaxtexd, as follows::
 
 	from djpjax import pjaxtend
-    
+
     @pjaxtend('someapp/base.html', 'my-pjax-extension.html', 'my_parent')
     def my_view(request):
         return TemplateResponse(request, "template.html", {'my': 'context'})
@@ -123,7 +123,7 @@ Which would require the following in your template:
     ...
     ...
 
- 
+
 Testing
 -------
 
