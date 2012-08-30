@@ -1,7 +1,5 @@
 import functools
 
-from django.views.generic.base import TemplateResponseMixin
-
 from pjax import _pjaxify_template_var
 
 

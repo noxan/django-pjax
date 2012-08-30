@@ -1,8 +1,8 @@
 # Django bootstrap, sigh.
 from django.conf import settings; settings.configure()
 
-import djpjax
 from pjax.views import PJAXResponseMixin
+from pjax.decorators import pjax, pjaxtend
 from django.template.response import TemplateResponse
 from django.test.client import RequestFactory
 from django.views.generic import View
@@ -93,35 +93,35 @@ def test_pjaxtend_custom_context():
 
 # The test "views" themselves.
 
-@djpjax.pjax()
+@pjax()
 def view_sans_pjax_template(request):
     return TemplateResponse(request, "template.html", {})
 
-@djpjax.pjax()
+@pjax()
 def view_with_silly_template(request):
     return TemplateResponse(request, "silly", {})
 
-@djpjax.pjax("pjax.html")
+@pjax("pjax.html")
 def view_with_pjax_template(request):
     return TemplateResponse(request, "template.html", {})
 
-@djpjax.pjax()
+@pjax()
 def view_with_template_tuple(request):
     return TemplateResponse(request, ("template.html", "other_template.html"), {})
 
-@djpjax.pjaxtend()
+@pjaxtend()
 def view_default_pjaxtend(request):
     return TemplateResponse(request, "template.html", {})
 
-@djpjax.pjaxtend('parent.html')
+@pjaxtend('parent.html')
 def view_default_parent_pjaxtend(request):
     return TemplateResponse(request, "template.html", {})
 
-@djpjax.pjaxtend('parent.html', 'parent-pjax.html')
+@pjaxtend('parent.html', 'parent-pjax.html')
 def view_custom_parent_pjaxtend(request):
     return TemplateResponse(request, "template.html", {})
 
-@djpjax.pjaxtend('parent.html', 'parent-pjax.html', 'my_parent')
+@pjaxtend('parent.html', 'parent-pjax.html', 'my_parent')
 def view_custom_context_pjaxtend(request):
     return TemplateResponse(request, "template.html", {})
 
