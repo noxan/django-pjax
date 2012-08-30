@@ -1,11 +1,13 @@
 # Django bootstrap, sigh.
 from django.conf import settings; settings.configure()
 
-from pjax.views import PJAXResponseMixin
-from pjax.decorators import pjax, pjaxtend
 from django.template.response import TemplateResponse
 from django.test.client import RequestFactory
 from django.views.generic import View
+
+from pjax.views import PJAXResponseMixin
+from pjax.decorators import pjax, pjaxtend
+
 
 # A couple of request objects - one PJAX, one not.
 rf = RequestFactory()
