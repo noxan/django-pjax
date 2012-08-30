@@ -1,6 +1,6 @@
 import functools
 
-from pjax import _pjaxify_template_var
+from pjax import pjaxify_template_var
 
 
 def pjax(pjax_template=None):
@@ -16,7 +16,7 @@ def pjax(pjax_template=None):
                 if pjax_template:
                     resp.template_name = pjax_template
                 else:
-                    resp.template_name = _pjaxify_template_var(resp.template_name)
+                    resp.template_name = pjaxify_template_var(resp.template_name)
             return resp
         return _view
     return pjax_decorator

@@ -1,6 +1,6 @@
 from django.views.generic.base import TemplateResponseMixin
 
-from pjax import _pjaxify_template_var
+from pjax import pjaxify_template_var
 
 
 class PJAXResponseMixin(TemplateResponseMixin):
@@ -13,5 +13,5 @@ class PJAXResponseMixin(TemplateResponseMixin):
             if self.pjax_template_name:
                 names = [self.pjax_template_name]
             else:
-                names = _pjaxify_template_var(names)
+                names = pjaxify_template_var(names)
         return names
