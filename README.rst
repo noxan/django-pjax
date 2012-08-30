@@ -133,4 +133,4 @@ Tests are run using nosetests. To install::
 
 And to run the tests::
 
-	nosetests tests.py
+	nosetests pjax/tests.py
