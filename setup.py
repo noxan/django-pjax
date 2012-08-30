@@ -18,7 +18,7 @@ setup(
     author = 'Jacob Kaplan-Moss',
     author_email = 'jacob@jacobian.org',
 
-    py_modules =  ['djpjax'],
+    packages = ['pjax'],
     install_requires = ['django>=1.3'],
 
     classifiers = (
