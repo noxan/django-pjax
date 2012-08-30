@@ -2,6 +2,7 @@
 from django.conf import settings; settings.configure()
 
 import djpjax
+from pjax.views import PJAXResponseMixin
 from django.template.response import TemplateResponse
 from django.test.client import RequestFactory
 from django.views.generic import View
@@ -124,19 +125,19 @@ def view_custom_parent_pjaxtend(request):
 def view_custom_context_pjaxtend(request):
     return TemplateResponse(request, "template.html", {})
 
-class NoPJAXTemplateVew(djpjax.PJAXResponseMixin, View):
+class NoPJAXTemplateVew(PJAXResponseMixin, View):
     template_name = 'template.html'
 
     def get(self, request):
         return self.render_to_response({})
 
-class SillyTemplateNameView(djpjax.PJAXResponseMixin, View):
+class SillyTemplateNameView(PJAXResponseMixin, View):
     template_name = 'silly'
 
     def get(self, request):
         return self.render_to_response({})
 
-class PJAXTemplateView(djpjax.PJAXResponseMixin, View):
+class PJAXTemplateView(PJAXResponseMixin, View):
     template_name = 'template.html'
     pjax_template_name = 'pjax.html'
     
