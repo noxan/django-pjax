@@ -96,11 +96,11 @@ def test_pjaxtend_custom_context():
 @djpjax.pjax()
 def view_sans_pjax_template(request):
     return TemplateResponse(request, "template.html", {})
-    
+
 @djpjax.pjax()
 def view_with_silly_template(request):
     return TemplateResponse(request, "silly", {})
-    
+
 @djpjax.pjax("pjax.html")
 def view_with_pjax_template(request):
     return TemplateResponse(request, "template.html", {})
@@ -140,6 +140,6 @@ class SillyTemplateNameView(PJAXResponseMixin, View):
 class PJAXTemplateView(PJAXResponseMixin, View):
     template_name = 'template.html'
     pjax_template_name = 'pjax.html'
-    
+
     def get(self, request):
         return self.render_to_response({})
